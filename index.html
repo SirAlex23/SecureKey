@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SecureKey — Generador y Validador</title>
+    <link rel="stylesheet" href="./securekey.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">🔑</div>
+        <div class="title">
+          <h1>SecureKey: Generador y Validador</h1>
+          <p class="lead">
+            Herramienta educativa para medir y generar contraseñas de alta
+            entropía.
+          </p>
+        </div>
+
+        <div class="actions">
+          <a
+            class="btn btn-ghost"
+            id="github-link"
+            href="https://github.com/[tu-usuario]/SecureKey"
+            target="_blank"
+            rel="noopener"
+            >Ver en GitHub</a
+          >
+          <a
+            class="btn btn-primary"
+            id="download-zip-btn"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >⤓ Descargar ZIP</a
+          >
+        </div>
+      </header>
+
+      <main>
+        <section class="card full-width">
+          <h2>🛠️ Generador de Contraseñas</h2>
+          <div class="generator-controls">
+            <input
+              type="number"
+              id="length-input"
+              value="16"
+              min="8"
+              max="64"
+              placeholder="Longitud"
+            />
+            <button id="generate-btn">Generar Contraseña</button>
+          </div>
+          <div class="output-field" id="generated-password-output">
+            ... Haz clic en Generar para una clave de 16 caracteres.
+          </div>
+        </section>
+
+        <section class="card full-width">
+          <h2>🔬 Validador de Contraseñas (Entropía)</h2>
+          <p class="lead-validator">
+            Introduce tu contraseña para obtener su puntuación de seguridad
+            (Entropía en Bits).
+          </p>
+
+          <input
+            type="password"
+            id="validate-input"
+            placeholder="Introduce la contraseña a validar"
+          />
+          <button onclick="validatePasswordDemo()">Evaluar Seguridad</button>
+
+          <div id="validation-output" style="margin-top: 15px">
+            <div class="validation-summary">
+              <p>Fuerza: <strong id="strength-display">---</strong></p>
+              <p>Entropía: <strong id="entropy-display">0 bits</strong></p>
+            </div>
+            <div class="validation-bar-container">
+              <div
+                class="validation-bar"
+                id="score-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--muted); margin-top: 10px"
+              id="recommendation-display"
+            >
+              La puntuación de entropía se basa en la longitud y la diversidad
+              de caracteres.
+            </p>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h3>Acciones rápidas</h3>
+          <p style="margin-top: 10px">
+            <a
+              class="download"
+              id="download-zip-cta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >⤓ Descargar proyecto (.zip)</a
+            >
+          </p>
+          <div style="margin-top: 14px">
+            <strong>Recursos</strong>
+            <p style="font-size: 13px; color: var(--muted); margin: 6px 0">
+              README:
+              <a id="readme-link" href="#" target="_blank">Ver README</a>
+            </p>
+            <p style="font-size: 13px; color: var(--muted); margin: 0">
+              Perfil:
+              <a id="profile-link" href="#" target="_blank"
+                >github.com/[tu-usuario]</a
+              >
+            </p>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        <small
+          >Proyecto educativo • Uso responsable • Código fuente en GitHub</small
+        >
+      </footer>
+    </div>
+
+    <script>
+      // --- Configuración para enlaces de GitHub y Descarga ZIP ---
+      // REEMPLAZA CON TU USUARIO Y EL NOMBRE EXACTO DEL REPOSITORIO
+      const GITHUB_USER = "SirAlex23";
+      const GITHUB_REPO = "SecureKey";
+      const GITHUB_BRANCH = "main";
+
+      // Construcción de la URL de descarga ZIP
+      const zipUrl = `https://github.com/${encodeURIComponent(
+        GITHUB_USER
+      )}/${encodeURIComponent(
+        GITHUB_REPO
+      )}/archive/refs/heads/${encodeURIComponent(GITHUB_BRANCH)}.zip`;
+
+      // Construcción de URLs de repositorio
+      const repoUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}`;
+      const profileUrl = `https://github.com/${GITHUB_USER}`;
+
+      // Asignar URLs a los elementos
+      document.getElementById("github-link").href = repoUrl;
+      document.getElementById("download-zip-btn").href = zipUrl;
+      document.getElementById("download-zip-cta").href = zipUrl;
+      document.getElementById("readme-link").href = `${repoUrl}#readme`;
+      document.getElementById("profile-link").href = profileUrl;
+      document.getElementById(
+        "profile-link"
+      ).textContent = `github.com/${GITHUB_USER}`;
+    </script>
+    <script src="./script.js"></script>
+  </body>
+</html>
